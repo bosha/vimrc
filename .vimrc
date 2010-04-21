@@ -59,10 +59,6 @@ set scrolloff=7
 set novisualbell
 set t_vb=   
 
-" " Mouse support
-" set mouse=a
-" set mousemodel=popup
-
 " " Default encoding
 set termencoding=utf-8
 
@@ -100,6 +96,7 @@ set softtabstop=4
 set tabstop=4
 set smarttab
 
+" 
 set cursorline
 
 " " Paren mode 
@@ -120,9 +117,6 @@ set sessionoptions=curdir,buffers,tabpages
 "" Hotkeys
 "-------------------------
 
-" " Space in normal mode list pages
-nmap <Space> <PageDown>
-
 " CTRL-F for omni completion
 imap <C-F> <C-X><C-O>
 
@@ -134,16 +128,12 @@ imap <C-V> <esc>"+gPi
 map <S-Insert> <MiddleMouse>
 
 " C-y - удаление текущей строки
-nmap <C-y> dd
-imap <C-y> <esc>ddi
+" nmap <C-y> dd
+" imap <C-y> <esc>ddi
 
 " " Поиск и замена слова под курсором
 nmap ; :%s/\<<c-r>=expand("<cword>")<cr>\>/
 "
-" " Quick Save by F2
-"nmap <F2> :w<cr>
-"vmap <F2> <esc>:w<cr>i
-"imap <F2> <esc>:w<cr>i
 
 " F3 - просмотр ошибок
 nmap <F3> :copen<cr>
@@ -180,6 +170,9 @@ imap <F9> <esc>:make<cr>i
 " vmap <F10> <esc>:bd<cr>
 " imap <F10> <esc>:bd<cr>
 
+" " F11 - VimCommander
+noremap <silent> <F11> :cal VimCommanderToggle()<CR>  
+
 " " < & > - делаем отступы для блоков
 " vmap < <gv
 " vmap > >gv
@@ -211,36 +204,6 @@ menu Encoding.windows-1251 :e ++enc=cp1251<CR>
 menu Encoding.cp866 :e ++enc=cp866<CR>
 menu Encoding.utf-8 :e ++enc=utf8 <CR>
 
-" " Редко когда надо [ без пары =)
-" imap [ []<LEFT>
-" " Аналогично и для {
-" imap {<CR> {<CR>}<Esc>O
-
-" " С-q -  Quit vim ;)
-map <C-Q> <Esc>:qa<cr>
-
-" " Autocomplete by tab key
-function InsertTabWrapper()
- let col = col('.') - 1
- if !col || getline('.')[col - 1] !~ '\k'
-  return "\<tab>"
- else
-  return "\<c-p>"
- endif
-endfunction
-imap <tab> <c-r>=InsertTabWrapper()<cr>
-         
- " " Where we put words to complete
-set complete=""
- " From current Buffer
-set complete+=.
- " " From dicts
-set complete+=k
- " " From other buffers
-set complete+=b
- " " From tags
-set complete+=t
-
 " Switches spelling
 
 setlocal spell spelllang=ru,en
@@ -256,7 +219,7 @@ nmap <F2> :set spell!<CR>
 imap <C-F2> <Esc>:emenu Spl.<TAB>
 nmap <C-F2> :emenu Spl.<TAB>
 
-" " For snippet plugin
+" " For snipmate plugin
 filetype plugin on
 
 au BufRead,BufNewFile *.phps    set filetype=php
@@ -269,38 +232,8 @@ au BufRead,BufNewFile *.thtml    set filetype=php
 let g:SessionMgr_AutoManage = 0
 let g:SessionMgr_DefaultName = "mysession"
 
-" " Настройки для Tlist (показвать только текущий файл в окне навигации по
-" коду)
-" let g:Tlist_Show_One_File = 1
-" 
-" set completeopt-=preview
-" set completeopt+=longest
-" set mps-=[:]
-
-" " Переключение раскладки, и индикация текущей
-" function MyKeyMapHighlight()
-"     if &iminsert == 0
-"         hi StatusLine ctermfg=DarkBlue guifg=DarkBlue
-"     else
-"         hi StatusLine ctermfg=DarkGreen guifg=DarkGreen
-"     endif
-" endfunction
-
-" " Вызываем функцию, что бы установила цвета при запуске вима
-" call MyKeyMapHighlight()
-
-" При изменении активного окна будет выполняться обновление
-" индикации текущей раскладки
-
-" au WinEnter * :call MyKeyMapHighlight()
-
-" cmap <silent> <C-F> <C-^>
-" imap <silent> <C-F> <C-^>X<Esc>:call MyKeyMapHighlight()<CR>a<C-H>
-" nmap <silent> <C-F> a<C-^><Esc>:call MyKeyMapHighlight()<CR>
-" vmap <silent> <C-F> <Esc>a<C-^><Esc>:call MyKeyMapHighlight()<CR>gv
-
 " " if you need to save file with root permission, just type :Wsudo to save.
-" command Wsudo set buftype=nowrite | silent execute ':%w !sudo tee %' | set buftype= | e! %
+command Wsudo set buftype=nowrite | silent execute ':%w !sudo tee %' | set buftype= | e! %
 
 " allow command line editing like emacs
 cnoremap <C-A>      <Home>
@@ -313,6 +246,3 @@ cnoremap <ESC><C-B> <S-Left>
 cnoremap <ESC>f     <S-Right>
 cnoremap <ESC><C-F> <S-Right>
 cnoremap <ESC><C-H> <C-W>
-
-" " VimCommander
-noremap <silent> <F11> :cal VimCommanderToggle()<CR> 
