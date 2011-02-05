@@ -1,1 +1,16 @@
-The .vimrc configuration file. Some basics setting, but very powerful and useful. I always be glad any additions, tips, trick and other ;)
+Vi IMproved configuration file
+================================
+
+Completly rewriten configuration file. Now are almost all commented and more readable.
+
+Plugins i use:
+
+    * NERDTree
+    * NERDCommenter
+    * Bufexplorer
+    * Mini BufExplorer
+    * MarksBrowser
+    * Snipmate
+    * Surround
+    * Visincr
+    * Zen Coding
