@@ -1,211 +1,197 @@
-"-------------------------
-"" Basic Settings
-"-------------------------
-" " For vim outliner
-filetype plugin indent on
+" ----------------------------------------------------------
+"
+" *****
+"
+" The Vi IMproved configuration file. 
+"
+" Config created by bosha.
+" Some cool stuff i get from Derek Wyatt's configuration 
+" file. You can find the original Derek's config at his
+" site - http://www.derekwyatt.org
+"
+" Feel free to contact with me: thebosha[@]gmail.com
+" Also visit my site for more cool stuff: http://the-bosha.ru
+"
+" *****
+"
+" ----------------------------------------------------------
 
-" disable the welcome screen
-set shortmess+=I        
+" ----------------------------------------------------------
+" " Some Global stuff
+" ----------------------------------------------------------
 
-" " Set encoding for autocompetition
-set fileencodings=utf-8,cp1251,koi8-r,cp866
+" Set filetype stuff to on
+filetype on
+filetype plugin on
+filetype indent on
 
-" " More pretty colors 
-set t_Co=256
-
-" " Setting up colorscheme
-colorscheme xoria256
-
-" " Set the reversal of lines according
-set wrap
-set linebreak
-
-" " I am not really now why i add this line
-set virtualedit=all
-
-" " Cool stuff to view word which changes now
-set cpoptions=ces$
-
-" " Turning off capability with vi
-set nocompatible
-
-" " Show cursor all the time
-set ruler  
-
-" " Show uncompleted commands in status bar
-set showcmd  
-
-" " Switch on line numbering 
-set nu
-
-" " Folding on indentation
-set foldmethod=manual
-
-" " Search as you type
-set incsearch
-
-" " Stop the search at the end of file
-set nowrapscan
-
-" Теперь нет необходимости передвигать курсор к краю экрана, чтобы подняться
-" в режиме редактирования
-set scrolljump=7
-
-" " Теперь нет необходимости передвигать курсор к краю экрана, чтобы
-" опуститься в режиме редактирования
-set scrolloff=7
-
-" " Set visual bell off
-set novisualbell
-set t_vb=   
-
-" " Default encoding
-set termencoding=utf-8
-
-" " Don't remove current buffer, when we switch to next.
-set hidden
-
-" " make command line height in one line
-set ch=1
-
-" " Hide mouse pointer when typing
-set mousehide
-
-" " Set autoindent
-set autoindent
-
-" " Syntax lighting
-syntax on
-
-" " Say to vim, that the background is black.
-" " That give us more beauty colors :)
-" set background=dark
-
-" " Turn off backup files
-set nobackup
-
-" " Turn off swap files
-set noswapfile
-
-" " Conversion tab to spaces.
-set expandtab
-
-" " set default tab size
+" Tabstops are 4 spaces
+set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-set tabstop=4
 set smarttab
 
-" 
-set cursorline
+" Automatically indent
+set autoindent
 
-" " Paren mode 
-" :let loaded_matchparen = 1
-set showmatch
+" set the search scan to wrap lines
+set wrapscan
 
-" " Status line format
-set statusline=%<%f%h%m%r%=format=%{&fileformat}\ file=%{&fileencoding}\ enc=%{&encoding}\ %b\ 0x%B\ %l,%c%V\ %P
+" set the search scan so that it ignores case when the search is all lower
+" case but recognizes uppercase if it's specified
+set ignorecase
+set smartcase
+
+" Make command line two lines high
+set ch=2
+
+" set no visual bell. 
+set novisualbell
+
+" Make the 'cw' and like commands put a $ at the end instead of just deleting
+" the text and replacing it
+set cpoptions=ces$
+
+" Don't remove buffer when we switch to next
+set hidden
+
+" Don't update the display while executing macros
+set lazyredraw
+
+" Show the current mode
+set showmode
+
+" Switch on syntax highlighting.
+syntax on
+
+" Hide the mouse pointer while typing
+set mousehide
+
+" When the page starts to scroll, keep the cursor 8 lines from the top and 8
+" lines from the bottom
+set scrolloff=10
+
+" Allow the cursor to go in to "invalid" places
+set virtualedit=all
+
+" Make the command-line completion better
+set wildmenu
+
+" When completing by tag, show the whole tag, not just the function name
+set showfulltag
+
+" Turn tabs into spaces
+set expandtab
+
+" Enable search highlighting
+set hlsearch
+
+" Incrementally match the search
+set incsearch
+
+" Stop searching at the end of file
+set nowrapscan
+
+" Default encoding
+set termencoding=utf-8
+
+" I really don't need those stupid swap files
+set noswapfile
+
+" " Turn On Xclipboard
+set clipboard+=unnamed  " On xclipboard
+set virtualedit=all     " On Virtual Edit for all modes
+set go+=a               " Vim select copy selected to clipboard 
+
+" ----------------------------------------------------------
+" " Stuff to make vim looks better
+" ----------------------------------------------------------
+
+" I really don't like default vim color scheme, so i 
+" prefere xoria256
+colorscheme xoria256
+
+" Set the status line 
+set statusline=%<%f%h%m%r%=\ %l,%c%V
+
+" Always show status line
 set laststatus=2
 
-" " Set "smart" indent
-set smartindent
+" When the page starts to scroll, keep the cursor 8 lines from the top and 8
+" lines from the bottom
+set scrolloff=8
 
-" " Session option
-set sessionoptions=curdir,buffers,tabpages
+" Show cursor all the time
+set ruler   
 
-"-------------------------
-"" Hotkeys
-"-------------------------
+" Highlight the line where cursor
+set cursorline
 
-" CTRL-F for omni completion
-imap <C-F> <C-X><C-O>
+" Show uncompleted commands in status bar
+set showcmd   
 
-" " C-c and C-v - Copy/Paste using "Global clipboard"
+" Set up the gui cursor to look nice
+set guicursor=n-v-c:block-Cursor-blinkon0
+set guicursor+=ve:ver35-Cursor
+set guicursor+=o:hor50-Cursor
+set guicursor+=i-ci:ver25-Cursor
+set guicursor+=r-cr:hor20-Cursor
+set guicursor+=sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
+
+" set the gui options
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar"
+
+" Set up the GVim window colors and size
+if has("gui_running")
+    set guifont="Monaco \10"
+    colorscheme xoria256
+    if !exists("g:vimrcloaded")
+        winpos 0 0
+        if ! &diff
+            winsize 130 90
+        else
+            winsize 227 90
+        endif
+        let g:vimrcloaded = 1
+    endif
+endif
+:nohls
+
+" ----------------------------------------------------------
+" " Mappings
+" ----------------------------------------------------------
+
+" Leader key
+let mapleader = ","
+
+" Turn off that stupid search highlights
+nmap <silent> ,n :set invhls<CR>:set hls?<CR>
+
+" F5 - List all buffers 
+nmap <F5> <Esc>:BufExplorer<cr>
+
+" F6 - Previous buffer
+map <F6> :bp<cr>
+
+" F7 - Next buffer
+map <F7> :bn<cr>
+
+" F8 - Marks list
+nmap <F8> :MarksBrowser<cr>
+
+" C-c and C-v - Copy/Paste using global clipboard
 vmap <C-C> "+yi
 imap <C-V> <esc>"+gPi
 
-" " Shitf-Insert like xterm
-map <S-Insert> <MiddleMouse>
+" Shift-Insert like xterm
+map <S-Insert> <MiddleMouse> 
 
-" C-y - удаление текущей строки
-" nmap <C-y> dd
-" imap <C-y> <esc>ddi
-
-" " Поиск и замена слова под курсором
-nmap ; :%s/\<<c-r>=expand("<cword>")<cr>\>/
-"
-
-" F3 - просмотр ошибок
-nmap <F3> :copen<cr>
-vmap <F3> <esc>:copen<cr>
-imap <F3> <esc>:copen<cr>
-
-" " F5 - просмотр списка буферов
-nmap <F5> <Esc>:BufExplorer<cr>
-vmap <F5> <esc>:BufExplorer<cr>
-imap <F5> <esc><esc>:BufExplorer<cr>
-
-" " F6 - предыдущий буфер
-map <F6> :bp<cr>
-vmap <F6> <esc>:bp<cr>i
-imap <F6> <esc>:bp<cr>i
-
-" " F7 - следующий буфер
-map <F7> :bn<cr>
-vmap <F7> <esc>:bn<cr>i
-imap <F7> <esc>:bn<cr>i
-
-" " F8 - список закладок
-map <F8> :MarksBrowser<cr>
-vmap <F8> <esc>:MarksBrowser<cr>
-imap <F8> <esc>:MarksBrowser<cr>
-
-" команда
-map <F9> :make<cr>
-vmap <F9> <esc>:make<cr>i
-imap <F9> <esc>:make<cr>i
-
-" " F10 - удалить буфер
-" map <F10> :bd<cr>
-" vmap <F10> <esc>:bd<cr>
-" imap <F10> <esc>:bd<cr>
-
-" " F11 - VimCommander
-noremap <silent> <F11> :cal VimCommanderToggle()<CR>  
-
-" " < & > - делаем отступы для блоков
-" vmap < <gv
-" vmap > >gv
-
-" " Клавиши быстрого редактирования строки, в режиме вставки
-" imap <C-J> <Left>
-" imap <C-K> <Right>
-" imap <C-L> <Del>
-
-" " И командной строке
-" cmap <C-K> <Right>
-" cmap <C-J> <Left>
-" cmap <C-L> <Del>
-
-" " Moving the lines easily.
-nmap <c-j> mz:m+<CR>`z==
-nmap <c-k> mz:m-2<CR>`z==
-imap <c-j> <Esc>:m+<CR>==gi
-imap <c-k> <Esc>:m-2<CR>==gi
-vmap <c-j> :m'>+<CR>gv=`<my`>mzgv`yo`z
-vmap <c-k> :m'<-2<CR>gv=`>my`<mzgv`yo`z
-
-
-" " Меню выбора кодировки текста (koi8-r, cp1251, cp866, utf8)
-set wildmenu
-set wcm=<Tab> 
-menu Encoding.koi8-r :e ++enc=koi8-r<CR>
-menu Encoding.windows-1251 :e ++enc=cp1251<CR>
-menu Encoding.cp866 :e ++enc=cp866<CR>
-menu Encoding.utf-8 :e ++enc=utf8 <CR>
+" NERDTree
+map <F9> :NERDTreeToggle<CR>
 
 " Switches spelling
-
 setlocal spell spelllang=ru,en
 set wildmenu
 set wcm=<Tab>
@@ -217,32 +203,19 @@ menu Spl.word_ignore zG
 imap <F2> <Esc>:set spell!<CR>
 nmap <F2> :set spell!<CR>
 imap <C-F2> <Esc>:emenu Spl.<TAB>
-nmap <C-F2> :emenu Spl.<TAB>
-
-" " For snipmate plugin
-filetype plugin on
-
-au BufRead,BufNewFile *.phps    set filetype=php
-au BufRead,BufNewFile *.thtml    set filetype=php
-
-" " If file head have #!/bin/ then chmod +x to file
-" au BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !chmod a+x | endif | endif
-
-" Настройки для SessionMgr
-let g:SessionMgr_AutoManage = 0
-let g:SessionMgr_DefaultName = "mysession"
-
-" " if you need to save file with root permission, just type :Wsudo to save.
-command Wsudo set buftype=nowrite | silent execute ':%w !sudo tee %' | set buftype= | e! %
+nmap <C-F2> :emenu Spl.<TAB> 
 
 " allow command line editing like emacs
 cnoremap <C-A>      <Home>
 cnoremap <C-E>      <End>
-" cnoremap <C-F>      <Right>
-cnoremap <C-N>      <End>
-cnoremap <C-P>      <Up>
-cnoremap <ESC>b     <S-Left>
-cnoremap <ESC><C-B> <S-Left>
-cnoremap <ESC>f     <S-Right>
-cnoremap <ESC><C-F> <S-Right>
-cnoremap <ESC><C-H> <C-W>
+
+" Zencoding
+let g:user_zen_expandabbr_key = '<c-e>'
+let g:use_zen_complete_tag = 1
+
+" ----------------------------------------------------------
+" " Some other stuff 
+" ----------------------------------------------------------
+
+" Wsudo to write save changes with root privilegies
+command Wsudo set buftype=nowrite | silent execute ':%w !sudo tee %' | set buftype= | e! %
