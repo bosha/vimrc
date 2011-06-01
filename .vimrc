@@ -145,7 +145,8 @@ set guioptions-=r  "remove right-hand scroll bar"
 
 " Set up the GVim window colors and size
 if has("gui_running")
-    set guifont="Monaco \10"
+    "set guifont="Monaco \10"
+    set guifont=UbuntuBetaMono\ 12
     colorscheme xoria256
     if !exists("g:vimrcloaded")
         winpos 0 0
