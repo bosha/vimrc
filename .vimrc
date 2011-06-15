@@ -34,6 +34,9 @@ set smarttab
 " Automatically indent
 set autoindent
 
+" Remove unsed white spaces
+set shiftround
+
 " set the search scan to wrap lines
 set wrapscan
 
@@ -103,6 +106,9 @@ set clipboard+=unnamed  " On xclipboard
 set virtualedit=all     " On Virtual Edit for all modes
 set go+=a               " Vim select copy selected to clipboard 
 
+" http://bugs.debian.org/608242, http://groups.google.com/group/vim_dev/browse_thread/thread/9770ea844cec3282 
+set t_RV=               
+
 " ----------------------------------------------------------
 " " Stuff to make vim looks better
 " ----------------------------------------------------------
@@ -164,6 +170,12 @@ endif
 " " Mappings
 " ----------------------------------------------------------
 
+set keymap=russian-jcukenwin "Switch keys
+
+let b:keymap_name='RU'
+set iminsert=0 " Latin charset by default
+set imsearch=0 " Latin charset by default in search mode
+
 " Leader key
 let mapleader = ","
 
@@ -191,20 +203,6 @@ map <S-Insert> <MiddleMouse>
 
 " NERDTree
 map <F9> :NERDTreeToggle<CR>
-
-" Switches spelling
-setlocal spell spelllang=ru,en
-set wildmenu
-set wcm=<Tab>
-menu Spl.next ]s
-menu Spl.prev [s
-menu Spl.word_good zg
-menu Spl.word_wrong zw
-menu Spl.word_ignore zG
-imap <F2> <Esc>:set spell!<CR>
-nmap <F2> :set spell!<CR>
-imap <C-F2> <Esc>:emenu Spl.<TAB>
-nmap <C-F2> :emenu Spl.<TAB> 
 
 " allow command line editing like emacs
 cnoremap <C-A>      <Home>
