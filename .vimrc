@@ -109,6 +109,10 @@ set go+=a               " Vim select copy selected to clipboard
 " http://bugs.debian.org/608242, http://groups.google.com/group/vim_dev/browse_thread/thread/9770ea844cec3282 
 set t_RV=               
 
+" "Fast tty" i don't know what that means,
+" but i hope tty will really fast! =D
+set ttyfast             
+
 " ----------------------------------------------------------
 " " Stuff to make vim looks better
 " ----------------------------------------------------------
@@ -175,12 +179,26 @@ set keymap=russian-jcukenwin "Switch keys
 let b:keymap_name='RU'
 set iminsert=0 " Latin charset by default
 set imsearch=0 " Latin charset by default in search mode
+"
+" switch language using <Ctrl-F>
+cmap <silent> <C-F> <C-^>
+imap <silent> <C-F> <C-^>
+
+" rebind <tab> key in normal and visual modes to
+" show parent\match brackets
+nnoremap <tab> %
+vnoremap <tab> %
+nnoremap ; :
 
 " Leader key
 let mapleader = ","
 
 " Turn off that stupid search highlights
 nmap <silent> ,n :set invhls<CR>:set hls?<CR>
+
+" Disable the F1 key (which normally opens help)
+" coz I hit it accidentally.
+noremap <F1> <nop>
 
 " F5 - List all buffers 
 nmap <F5> <Esc>:BufExplorer<cr>
@@ -211,6 +229,11 @@ cnoremap <C-E>      <End>
 " Zencoding
 let g:user_zen_expandabbr_key = '<c-e>'
 let g:use_zen_complete_tag = 1
+
+" LustyBufExplorer keys
+noremap <silent> <leader>b :LustyBufferExplorer<CR>
+noremap <silent> <leader>f :LustyFilesystemExplorer<CR>
+noremap <silent> <leader>r :LustyFilesystemExplorerFromHere<CR>
 
 " ----------------------------------------------------------
 " " Some other stuff 
