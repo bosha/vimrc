@@ -1,17 +1,12 @@
 Vi IMproved configuration file
 ================================
 
-Completly rewriten configuration file. 
-Now are almost all commented and more readable.
+## Installation ##
 
-Plugins i use:
+    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+    git clone https://github.com/bosha/vimrc/
+    mv vimrc/.vimrc ~/
 
-    * NERDTree
-    * NERDCommenter
-    * Bufexplorer
-    * Mini BufExplorer
-    * MarksBrowser
-    * Snipmate
-    * Surround
-    * Visincr
-    * Zen Coding
+Open Vim and run :BundleInstall
+
+Also remember what some of plugins have their one requipments. For example: TagBar -> ctags and Command-T -> ruby-dev for build module.
