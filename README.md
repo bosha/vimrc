@@ -1,4 +1,4 @@
-# **V**i **IM**proved configuration file #
+# Vi IMproved configuration file #
 
 ## Installation ##
 
@@ -8,4 +8,7 @@
 
 Open Vim and run :BundleInstall
 
-**Also remember** what some of plugins have their one requipments. For example: TagBar -> ctags and Command-T -> ruby-dev for build module.
+**Also remember** what some of plugins have their one requipments. For example: 
+
+1. TagBar -> ctags 
+2. Command-T -> ruby-dev for build module.
