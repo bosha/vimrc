@@ -122,12 +122,12 @@ set laststatus=2
 set scrolloff=999
 
 " Show cursor all the time
-set ruler   
+set ruler
 
 " Highlight the line where cursor set cursorline
 
 " Show uncompleted commands in status bar
-set showcmd   
+set showcmd
 
 " Don't remove buffer when we switch to next
 set hidden
@@ -156,7 +156,7 @@ set incsearch
 set nowrapscan
 
 " add some line space for easy reading
-set linespace=1         
+set linespace=1
 
 " Highlight 80 column
 if exists('+colorcolumn')
@@ -174,8 +174,8 @@ set textwidth=80
 " Turn on line wrap
 set wrap
 
-" Breaking lines without breaking them 
-set linebreak           
+" Breaking lines without breaking them
+set linebreak
 
 " Default encoding
 set termencoding=utf-8
@@ -233,7 +233,6 @@ if has('multi_byte')
     highlight SpecialKey guifg=#4a4a59
 
     if version >= 700
-        " set listchars=tab:▸\ ,trail:·,extends:❯,precedes:❮,nbsp:×,eol:¬
         set listchars=tab:▸\ ,trail:·,extends:❯,precedes:❮,nbsp:×
     else
         set listchars=tab:»\ ,trail:·,extends:>,precedes:<,nbsp:_
@@ -271,6 +270,41 @@ if has("gui_running")
     set guioptions-=T  "remove toolbar
     set guioptions-=r  "remove right-hand scroll bar"
 endif
+
+" Creates a session
+function! MakeSession()
+    let b:sessionfile = 'project.vim'
+    exe "mksession! " . b:sessionfile
+endfunction
+
+" Updates a session, BUT ONLY IF IT ALREADY EXISTS
+function! UpdateSession()
+    if argc()==0
+        let b:sessionfile = "project.vim"
+        if (filereadable(b:sessionfile))
+            exe "mksession! " . b:sessionfile
+            echo "updating session"
+        endif
+    endif
+endfunction
+
+" Loads a session if it exists
+function! LoadSession()
+    if argc() == 0
+        let b:sessionfile = "project.vim"
+        if (filereadable(b:sessionfile))
+            exe 'source ' b:sessionfile
+        else
+            echo "No session loaded."
+        endif
+    else
+        let b:sessionfile = ""
+        let b:sessiondir = ""
+    endif
+endfunction
+
+au VimEnter * nested :call LoadSession()
+au VimLeave * :call UpdateSession()
 
 " ----------------------------------------------------------
 " " Mappings
@@ -337,3 +371,4 @@ nmap g# g#zz
 " Don't skip wrap lines
 noremap j gj
 noremap k gk
+
