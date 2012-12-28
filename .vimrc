@@ -125,6 +125,7 @@ set scrolloff=999
 set ruler
 
 " Highlight the line where cursor set cursorline
+set cursorline
 
 " Show uncompleted commands in status bar
 set showcmd
@@ -198,10 +199,10 @@ set showmatch
 set matchtime=5
 
 " Line numbers off
-set nonumber 
+set nonumber
 
 " No blinking
-set novisualbell 
+set novisualbell
 
 " No noise.
 set noerrorbells
