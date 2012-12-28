@@ -224,9 +224,9 @@ set noswapfile
 set t_Co=256
 
 " Auto change the directory to the current file I'm working on
-autocmd BufEnter * lcd %:p:h
+" autocmd BufEnter * lcd %:p:h
 
-" Символ табуляции и конца строки
+" Tab at the end of line
 if has('multi_byte')
 
     highlight NonText guifg=#4a4a59
