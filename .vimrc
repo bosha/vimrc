@@ -373,3 +373,6 @@ nmap g# g#zz
 noremap j gj
 noremap k gk
 
+" Space for open/close folds if exist
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+vnoremap <Space> zf
