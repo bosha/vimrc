@@ -325,6 +325,9 @@ noremap <F1> <nop>
 nnoremap <silent> <C-P> :bp<cr>
 nnoremap <silent> <C-N> :bn<cr>
 
+" ,cd to change pwd to current file dir
+nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
+
 " C-c and C-v - Copy/Paste using global clipboard
 vmap <C-C> <esc> "+yi
 imap <C-V> <esc>"+gPi
