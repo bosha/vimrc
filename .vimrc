@@ -325,6 +325,12 @@ noremap <F1> <nop>
 nnoremap <silent> <C-P> :bp<cr>
 nnoremap <silent> <C-N> :bn<cr>
 
+" Use ctrl-h/j/k/l to switch between splits
+nnoremap <M-Right> <C-W><Right>
+nnoremap <M-Left> <C-W><Left>
+nnoremap <M-Up> <C-W><Up>
+nnoremap <M-Down> <C-W><Down>
+
 " ,cd to change pwd to current file dir
 nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
 
