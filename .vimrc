@@ -2,7 +2,7 @@
 "
 " *****
 "
-" The Vi IMproved configuration file. 
+" The Vi IMproved configuration file.
 "
 " Config created by bosha.
 "
@@ -326,10 +326,10 @@ nnoremap <silent> <C-P> :bp<cr>
 nnoremap <silent> <C-N> :bn<cr>
 
 " Use ctrl-h/j/k/l to switch between splits
-nnoremap <M-Right> <C-W><Right>
-nnoremap <M-Left> <C-W><Left>
-nnoremap <M-Up> <C-W><Up>
-nnoremap <M-Down> <C-W><Down>
+nnoremap <C-Right> <C-W><Right>
+nnoremap <C-Left> <C-W><Left>
+nnoremap <C-Up> <C-W><Up>
+nnoremap <C-Down> <C-W><Down>
 
 " ,cd to change pwd to current file dir
 nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
@@ -364,11 +364,11 @@ nnoremap <silent> <Esc><Esc> :nohlsearch<CR><Esc>
 " grep in current dir by word under cursor
 map <Leader>f :execute "Ack " . expand("<cword>") <Bar> cw<CR>
 
-" Moving in insert mode using Ctrl-h\j\k\l
-imap <C-h> <C-o>h
-imap <C-j> <C-o>j
-imap <C-k> <C-o>k
-imap <C-l> <C-o>l
+" Moving between splits with Ctrl-H\J\K\L
+map <C-H> <C-W>h
+map <C-J> <C-W>j
+map <C-K> <C-W>k
+map <C-L> <C-W>l
 
 " 'Centered' search results
 nmap n nzz
