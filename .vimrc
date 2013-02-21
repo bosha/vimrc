@@ -307,6 +307,12 @@ endfunction
 au VimEnter * nested :call LoadSession()
 au VimLeave * :call UpdateSession()
 
+" Save cursor position when changing split
+if v:version >= 700
+  au BufLeave * let b:winview = winsaveview()
+  au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
+endif
+
 " ----------------------------------------------------------
 " " Mappings
 " ----------------------------------------------------------
