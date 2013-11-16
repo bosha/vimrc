@@ -214,6 +214,7 @@ set foldenable " Turn on folding
 set foldmethod=marker " Fold on the marker
 set foldlevel=100 " Don't autofold anything (but I can still fold manually)
 set foldopen=block,hor,mark,percent,quickfix,tag " what movements open folds 
+set foldlevel=0 " closed fold by default
 
 " Turn off backup files
 set nobackup 
