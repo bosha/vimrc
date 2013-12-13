@@ -314,6 +314,12 @@ if v:version >= 700
   au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
 endif
 
+" Remove whitespaces from all file
+function! TrimWhitespace()
+    %s/\s\+$//e
+endfunction
+command! TrimWhitespace call TrimWhitespace()
+
 " ----------------------------------------------------------
 " " Mappings
 " ----------------------------------------------------------
