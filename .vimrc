@@ -25,8 +25,8 @@ call vundle#rc()
 " Bundle 'Lokaltog/vim-easymotion'
 " Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 
-Bundle 'mattn/zencoding-vim'
-let g:user_zen_expandabbr_key = '<C-e>'
+Bundle 'mattn/emmet-vim'
+let g:user_emmet_expandabbr_key = '<C-e>'
 
 Bundle 'vim-scripts/TaskList.vim'
 
