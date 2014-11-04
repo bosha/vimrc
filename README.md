@@ -2,7 +2,7 @@
 
 ## Installation ##
 
-    bash <(curl -s https://raw.githubusercontent.com/bosha/vimrc/master/install.sh)
+    bash <(wget -q -O - https://raw.githubusercontent.com/bosha/vimrc/master/install.sh)
 
 **Also remember** what some of plugins have their one requipments. For example: 
 
