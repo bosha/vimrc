@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 # ----------------------------------------------------
 # This is simple script to install VIM configuration.
 # ----------------------------------------------------
@@ -61,11 +62,8 @@ echo "Cloning VIM configuration.."
 git clone https://github.com/bosha/vimrc.git &> /dev/null
 
 if promptyn "Wanna review configuration before install?" ; then
-     if [ -z "$EDITOR" ]; then
-         echo "\$EDITOR variable is empty or not set."
-     else
-         $EDITOR /tmp/vimrc/.vimrc
-     fi
+    [[ -z "$EDITOR" ]] && EDITOR=vi
+    $EDITOR /tmp/vimrc/.vimrc
 fi
 
 echo "Applying configuration"
